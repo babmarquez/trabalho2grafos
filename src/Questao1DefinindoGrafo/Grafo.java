@@ -8,9 +8,9 @@ package Questao1DefinindoGrafo;
 
 /**
  *
- * @author Ana Paula Fidelis e Bárbara Marquez
+ * @author anaFidelis
  */
-public class Grafo {
+public class Grafo {    
     //falta fazer o bipartido
     public String tipoGrafo(int[][] matriz){
         String dirigido = isDirigido(matriz)? "dirigido" : "não é dirigido";
@@ -34,12 +34,14 @@ public class Grafo {
             }            
         }        
         
-        return "O grafo é: "+dirigido+multiGrafo+nulo+regular+completo;
+        return "Classificação: "+dirigido+multiGrafo+nulo+regular+completo;
     }
     
     public String grausDoVertice(int[][] matriz){
+        OrdenacaoMergeSort<Integer> merge = new OrdenacaoMergeSort();
+        Integer[] sequencia = new Integer[matriz.length];
+        
         int grau;
-        String sequencia = "";
         String graus = "";
         for (int i = 0; i < matriz.length; i++) {
             grau = 0;
@@ -47,11 +49,27 @@ public class Grafo {
                 if (matriz[i][j] > 0)    
                     grau += matriz[i][j];
             }
-            graus += "\n Véertice "+i+" - grau: "+grau; 
-            sequencia += ","+grau; //tem que ordernar em ordem crescente
+            graus += "\n Vértice "+i+" - grau: "+grau; 
+            sequencia[i] = grau;
         }
         
-        return graus+"\n"+sequencia;
+        merge.setInfo(sequencia);
+        merge.ordenar();
+        
+        return graus+"\n"+merge.mostraVetor(sequencia, ",");
+    }
+    
+    public String arestasDoGrafo(int[][] matriz){
+        int countArestas = 0;
+        
+        for (int i = 0; i < matriz.length; i++) {            
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] > 0)    
+                    countArestas += matriz[i][j];
+            }
+        }
+        
+        return "Quantidade de arestas: "+(isDirigido(matriz) ? countArestas : countArestas/2);
     }
     
     private boolean isDirigido(int[][] matriz){

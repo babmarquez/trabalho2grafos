@@ -58,6 +58,7 @@ public class Main {
         
         Grafo grafo = new Grafo();
         System.out.println(grafo.tipoGrafo(matriz));
+        System.out.println(grafo.arestasDoGrafo(matriz));
         System.out.println(grafo.grausDoVertice(matriz));
     }
 }
