@@ -5,6 +5,8 @@
  */
 package Questao2ManiaDePar;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ana Paula Fidelis e Bárbara Marquez
@@ -13,9 +15,12 @@ public class GrafoDijkstra {
     private int c;
     private int v;
     
-    private Caminho[] caminhos;
-    private Grafo[] grafo;
-        
+    int matriz[][];
+    int verticeInicial;
+    int vertices[];
+    Integer pai[];
+    int custo[];
+    
     public GrafoDijkstra(String entrada) {
         String[] linhas = entrada.split("\n");
         processaPrimeiraLinha(linhas[0]);
@@ -23,7 +28,10 @@ public class GrafoDijkstra {
             processaLinha(linhas[i]);
         }
         
-        processarGrafo();
+        this.matriz = matriz;
+        this.vertices = vertices;
+        this.pai = new Integer[matriz.length];
+        custo = new int[matriz.length];
     }
     
     public void processaPrimeiraLinha(String linha) {
@@ -31,163 +39,96 @@ public class GrafoDijkstra {
         c = Integer.parseInt(dados[0]);
         v = Integer.parseInt(dados[1]);
     }
-        
-    public void Escreve() {
-        System.out.println("Valor de c = " + c);
-        System.out.println("Valor de v = " + v);
-        
-        System.out.println("\n");
-        
-        for(Caminho caminho : caminhos){
-            System.out.println("Valor de c1 = " + caminho.getC1());
-            System.out.println("Valor de c2 = " + caminho.getC2());
-            System.out.println("Valor de g = " + caminho.getG());
-            System.out.println("\n");
-        }
-        
-        System.out.println("---------");
-        System.out.println("\n");
-        
-        for (Grafo itemGrafo : grafo){
-            System.out.println("Valor do indice = " + itemGrafo.getIndice());
-            System.out.println("Valor do predecessor = " + itemGrafo.getPredecessor());
-            System.out.println("Valor da distância = " + itemGrafo.getDistancia());
-            System.out.println("\n");
-        }
-    }
     
-    private void getAdjacentes(Object v){
-        /*
-def getAdjacentes(v):
-    lstAdjacentes = set()
-    for caminho in caminhos:
-        if caminho['c1'] == v['indice']:
-            lstAdjacentes.add(caminho['c2'])
+    private void processaLinha(String linha){
+        String[] dados = linha.split(" ");
+        int c1 = Integer.parseInt(dados[0]);
+        int c2 = Integer.parseInt(dados[2]);
+        int g = Integer.parseInt(dados[1]);
         
-        #if caminho['c2'] == v['indice']:
-        #    lstAdjacentes.add(caminho['c1'])
+        //matriz[][]
+    }
             
-    return lstAdjacentes  
-
-        */
-    }
-    
-    private void InicializaGrafo(){
-        /*
-        for cidade in range(c):
-        #Cria uma estrutura - pode ser substituido por um objeto, contendo os atributos
-        #indice, predecessor e distancia 
-        #sys.maxsize e igual ao Integer.MAX_VALUE do Java
-        #cidade + 1 significa que e para comecar de 1 e nao de 0
-        g = {'indice': cidade + 1, 'predecessor': None, 
-             'distancia':  sys.maxsize}
-        grafo.append(g)
-    
-        */
-    }
-    
-    private void ExtraiMinimo(Grafo q){
-        /*
-        menor = sys.maxsize
-        gMenor = None
-        idxRemove = 0
-
-        idx = 0
-        for q in Q:
-            if q['distancia'] < menor:
-                print("Indice escolhido", q['indice'])
-                gMenor = q
-                idx = idxRemove
-                menor = q['distancia']
-
-            idxRemove += 1
-
-        print("idxRemove", idx)
-        return [gMenor, idx]
-        */
-    }
-    
-    private int PegaCustoDasArestas(){
-        return 0;
-        /*
-        def getCustoFromArestas(inicio, fim):
-        for caminho in caminhos:
-            if caminho['c1'] == inicio and caminho['c2'] == fim:
-                return caminho['g']
-
-        return 0
-        */
-    }
-    
-    private void MelhorarCusto(){
-        /*
-        def relaxamento(u, v, w):
-        print("Vertice ", v)
-        vertice = grafo[v - 1]
-
-        if vertice['distancia'] > u['distancia'] + w:
-            vertice['distancia'] = u['distancia'] + w
-            vertice['predecessor'] = u['indice']
-        */
-    }
-    
-    private void Dijkstra(){
-        //Seta a posição inicial para 0
-        grafo[0].setDistancia(0);
+    public void inicializaGrafo() 
+    {
+        vertices[0] = verticeInicial;
+        pai[0] = null;
+        custo[0] = 0;
         
-        
-        /*
-        #Seta a distancia da posicao inicial pra 0
-        grafo[0]['distancia'] = 0
-
-        S = []
-        Q = list(grafo)
-
-        while len(Q) > 0:
-            res = extractMin(Q)
-            u = res[0]
-            del Q[res[1]]
-
-            for q in Q:
-                print("Indice de q", q['indice'])
-
-            print("Valor de u ", u['indice'])
-            S.append(u)
-            for adj in getAdjacentes(u):
-                relaxamento(u, adj, 
-                            getCustoFromArestas(u['indice'], adj))
-        */
-    }
-    
-    public int CalcularCaminho(){
-        
-        
-        return -1;
-        /*
-        # MAIN
-        
-        #Inicializa as cidades
-        inicializa()
-        */
-        for(int i = 0; i <= this.v; i++) {
-            
+        for (int i = 1; i < vertices.length; i++) 
+        {
+            pai[i] = null;
+            custo[i] = Integer.MAX_VALUE;
         }
-        /*
-        #Itera o v e cria uma nova estrutura com os caminhos
-        for i in range(v):
-            c1, c2, g = input().split()
-            c1 = int(c1)
-            c2 = int(c2)
-            g = int(g)
-            #Cria a estrutura de caminhos - c1, c2 e g. Pode ser substituido por um objeto.
-            d = {'c1': c1, 'c2': c2, 'g': g}
-            caminhos.append(d)
-
-        dijkstra()
-
-        printa()
-        */
+    }
+    
+    public void funcaoRelaxamento(int pivo, int vertice)
+    {
+        if (getDistanciaVertice(pivo, vertice) < Integer.MAX_VALUE && 
+                getCustoVertice(vertice) >  getCustoVertice(pivo) + getDistanciaVertice(pivo, vertice)) 
+        {
+            this.custo[vertice] = this.custo[pivo] + getDistanciaVertice(pivo, vertice);
+            this.pai[vertice] = pivo;
+        }
+    }
+    
+    public int getCustoVertice(int vertice)
+    {
+        for (int i = 0; i < vertices.length; i++) {
+            if (vertice == vertices[i]) {
+                return custo[i];
+            }
+        }
         return 0;
     }
     
+    public int getDistanciaVertice(int verticeInicial, int verticeFinal)
+    {
+        return this.matriz[verticeInicial][verticeFinal];
+    }
+    
+    public void calculaDijsktra()
+    {
+        inicializaGrafo();
+        int[] s = new int[vertices.length];
+        int q[] = new int[vertices.length];
+        for (int k = 0; k < vertices.length; k++) {
+            q[k] = vertices[k];
+        }
+        int i = 0;
+        int u = Integer.MAX_VALUE;
+        while (i < q.length) 
+        {
+            u = extractMinimo(q);
+            s[i] = u;
+            
+            for (int j = 0; j < vertices.length; j++) {
+                if (!isPercorrido(s, vertices[j])) {
+                    funcaoRelaxamento(u, vertices[j]);
+                }
+            }
+            q[i] = Integer.MAX_VALUE;
+            i++;
+        }
+    }
+    
+    public boolean isPercorrido(int s[], int v)
+    {
+        for (int i : s) {
+            if (i == v) return true;
+        }
+        return false;
+    }
+    
+    /* Extrai o mínimo do array de vértices - com o menor custo */
+    public int extractMinimo(int vertices[]) 
+    {
+        int minimo = Integer.MAX_VALUE;
+        for (int i = 0; i < vertices.length; i++) {
+            if (vertices[i] != Integer.MAX_VALUE && custo[vertices[i]] < minimo) {
+                minimo = vertices[i];
+            }
+        }
+        return minimo;
+    }
 }
