@@ -8,10 +8,12 @@ package Questao1DefinindoGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  */
-public class Main {
-    public static void main(String[] args) {
+public class Main
+{
+    public static void main(String[] args)
+    {
         int[][] matriz = new int [6][6];
         
         matriz[0][0] = 0;

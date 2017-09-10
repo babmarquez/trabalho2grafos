@@ -7,7 +7,7 @@ package Questao3ArvoresGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  */
 public enum TipoCorGrafo {
     BRANCO, CINZA, PRETO;

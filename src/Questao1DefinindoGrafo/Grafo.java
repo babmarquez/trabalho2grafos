@@ -8,7 +8,7 @@ package Questao1DefinindoGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  */
 public class Grafo {    
     //falta fazer o bipartido

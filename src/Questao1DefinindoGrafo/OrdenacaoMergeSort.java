@@ -8,11 +8,11 @@ package Questao1DefinindoGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  * @param <T>
  */
-public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstract<T>{
-
+public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstract<T>
+{
     @Override
     public void ordenar() {        
         int tamanho = getInfo().length;
@@ -82,5 +82,4 @@ public class OrdenacaoMergeSort<T extends Comparable<T>> extends OrdenacaoAbstra
 
         return result.substring(0, result.length() - 1);
     }
-
 }

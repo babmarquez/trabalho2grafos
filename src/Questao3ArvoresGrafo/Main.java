@@ -8,9 +8,10 @@ package Questao3ArvoresGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  */
-public class Main {
+public class Main
+{
     public static void main(String[] args) {
         Grafo gA = new Grafo();
         Grafo gB = new Grafo();

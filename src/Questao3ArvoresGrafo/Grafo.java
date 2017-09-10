@@ -10,9 +10,10 @@ import java.util.Vector;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  */
-public class Grafo {
+public class Grafo
+{
     private TipoCorGrafo cor;
     private Vector<Grafo> adjacencias;
 

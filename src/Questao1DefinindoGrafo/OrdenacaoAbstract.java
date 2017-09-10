@@ -8,10 +8,11 @@ package Questao1DefinindoGrafo;
 
 /**
  *
- * @author anaFidelis
+ * @author Ana Paula Fidelis e Bárbara Marquez
  * @param <T>
  */
-public abstract  class OrdenacaoAbstract<T extends Comparable<T>> {
+public abstract  class OrdenacaoAbstract<T extends Comparable<T>>
+{
     private T[] info;
     
     public abstract void ordenar();
@@ -23,6 +24,4 @@ public abstract  class OrdenacaoAbstract<T extends Comparable<T>> {
     public void setInfo(T[] info) {
         this.info = info;
     }
-    
-    
 }
